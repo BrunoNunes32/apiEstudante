@@ -9,7 +9,6 @@ import lombok.AllArgsConstructor;
 
 import java.util.List;
 
-import org.hibernate.annotations.DialectOverride.Wheres;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
@@ -54,6 +53,11 @@ public class EstudanteController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> excluirEstudante(@PathVariable Long id) {
 		return estudanteService.excluirEstudante(id);
+	}
+	
+	@GetMapping("/naoAvaliaram")
+	public List<Estudante> buscarEstudantesQueNaoAvaliaram(){
+		return estudanteService.buscarEstudantesQueNaoAvaliaram();
 	}
 	
 

@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.data.domain.Page;
@@ -64,11 +65,12 @@ public class EstudanteService {
 		if (estudanteRepository.existsById(id)) {
 			estudanteRepository.deleteById(id);
 			return ResponseEntity.status(HttpStatus.OK).body("Estudante deletado com sucesso");
-			
 		}
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Estudante não encontrado");
-		
 	}
 	
+	public List<Estudante> buscarEstudantesQueNaoAvaliaram(){
+		return estudanteRepository.findByAvaliacaoCursosEstudanteIsNull();
+	}
 	
 }
