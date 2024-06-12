@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
@@ -32,10 +33,14 @@ public class Estudante {
 	private String email;
 	private LocalDate dataNascimento;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE})
 	@JoinColumn(name = "endereco_id",referencedColumnName = "id")
 	private Endereco endereco;
 	
 	@OneToMany(mappedBy = "estudante", cascade = CascadeType.ALL, orphanRemoval = true)
-	private Set<Livro> livros;
+	private Set<Livro> livros = new HashSet<>();
+	
+	@OneToMany(mappedBy = "estudante")
+	private Set<AvaliacaoCurso> avaliacaoCursos;
+	
 }
