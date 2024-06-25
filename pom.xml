@@ -53,6 +53,10 @@
 			<artifactId>netty-socketio</artifactId>
 			<version>1.7.22</version> 
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+		</dependency>
 	</dependencies>
 	
 
@@ -73,4 +77,17 @@
 		</plugins>
 	</build>
 
+	<url/>
+	<licenses>
+		<license/>
+	</licenses>
+	<developers>
+		<developer/>
+	</developers>
+	<scm>
+		<connection/>
+		<developerConnection/>
+		<tag/>
+		<url/>
+	</scm>
 </project>
