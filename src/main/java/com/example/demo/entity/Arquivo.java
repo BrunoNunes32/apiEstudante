@@ -12,5 +12,4 @@ public class Arquivo {
 	private String linkDown;
 	private String extensaoArquivo;
 	private long size;
-
 }

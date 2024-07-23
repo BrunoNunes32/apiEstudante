@@ -9,14 +9,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.demo.entity.Arquivo;
 import com.example.demo.service.ArquivoService;
 
-import jakarta.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/arquivos")
@@ -25,7 +25,7 @@ public class ArquivoController {
 	private ArquivoService  arquivoService;
 	
 	@PostMapping("/upload")
-	public Arquivo uploadArquivo(@RequestParam("file") MultipartFile file) {
+	public Arquivo uploadArquivo(@RequestPart("file") MultipartFile file) {
 		String nomeArquivo = arquivoService.salvarArquivo(file);
 		
 		String caminhoArquivo = ServletUriComponentsBuilder.fromCurrentContextPath().path("/arquivos/downloadArquivo").path(nomeArquivo).toUriString();
